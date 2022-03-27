@@ -31,6 +31,13 @@ class RecipeTest < ActiveSupport::TestCase
     assert_not recipe1.save, "12 letter about saved"
     assert_not recipe2.save, "3 letter about saved"
     assert recipe3.save, "enough letter about not saved"
+  end
 
+  test "recipe title should not be more than 20 chars" do
+    recipe0 = Recipe.new(title: "aaaaaaaaaaaaaaaaaaaaaaaaa", about: "asdasdasdasahbfdjsklkjdaksfdlksjdkmffsdnjas")
+    recipe1 = Recipe.new(title: "aaaaaaaaaa", about: "asdasdasdasahbfdjsklkjdaksfdlksjdkmffsdnjas")
+
+    assert_not recipe0.save, "title is too long"
+    assert recipe1.save, "title is enough"
   end
 end
