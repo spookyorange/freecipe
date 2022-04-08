@@ -1,36 +1,70 @@
-require "test_helper"
+require 'test_helper'
 
 class RecipeTest < ActiveSupport::TestCase
-  test "recipe should not be saved without any attributes" do
+  test 'recipe should not be saved without any attributes' do
     recipe = Recipe.new
-    assert_not recipe.save, "recipe saved without attribute"
+    assert_not recipe.save, 'recipe saved without attribute'
   end
 
-  test "recipe title must be at least 4 letters" do
-    recipe0 = Recipe.new(about: "ashdasjkflsdjashjdklskfnasjfmksöldadknjmasöldf")
-    recipe1 = Recipe.new(title: "a", about: "ashdasjkflsdjashjdklskfnasjfmksöldadknjmasöldf")
-    recipe2 = Recipe.new(title: "aa", about: "ashdasjkflsdjashjdklskfnasjfmksöldadknjmasöldf")
-    recipe3 = Recipe.new(title: "aaa", about: "ashdasjkflsdjashjdklskfnasjfmksöldadknjmasöldf")
-    recipe4 = Recipe.new(title: "aaaa", about: "ashdasjkflsdjashjdklskfnasjfmksöldadknjmasöldf")
-    recipe5 = Recipe.new(title: "aaaaa", about: "ashdasjkflsdjashjdklskfnasjfmksöldadknjmasöldf")
-    assert_not recipe0.save, "no title saved"
-    assert_not recipe1.save, "1 letter title saved"
-    assert_not recipe2.save, "2 letter title saved"
-    assert_not recipe3.save, "3 letter title saved"
-    assert recipe4.save, "4 letter title not saved"
-    assert recipe5.save, "5 letter title not saved"
+  test 'recipe title must be at least 4 letters' do
+    recipe = Recipe.new(title: 'a' * 1, about: 'a' * 20)
+
+    assert_not recipe.save
+
+    recipe = Recipe.new(title: 'a' * 3, about: 'a' * 20)
+    assert_not recipe.save
+
+    recipe = Recipe.new(title: 'a' * 4, about: 'a' * 20)
+
+    assert recipe.save
+
+    recipe = Recipe.new(title: 'a' * 9, about: 'a' * 20)
+
+    assert recipe.save
   end
 
-  test "recipe about needs to be at least 15 letters and maximum of 250 letters" do
-    assert true
+  test 'recipe title should not be more than 20 chars' do
+    recipe = Recipe.new(title: 'a' * 20, about: 'a' * 20)
+
+    assert recipe.save
+
+    recipe = Recipe.new(title: 'a' * 21, about: 'a' * 20)
+
+    assert_not recipe.save
+
+    recipe = Recipe.new(title: 'a' * 32, about: 'a' * 20)
+
+    assert_not recipe.save
   end
 
-  test "recipe title should not be more than 20 chars" do
-    recipe0 = Recipe.new(title: "aaaaaaaaaaaaaaaaaaaaaaaaa", about: "asdasdasdasahbfdjsklkjdaksfdlksjdkmffsdnjas")
-    recipe1 = Recipe.new(title: "aaaaaaaaaa", about: "asdasdasdasahbfdjsklkjdaksfdlksjdkmffsdnjas")
 
-    assert_not recipe0.save, "title is too long"
-    assert recipe1.save, "title is enough"
+  test 'recipe about needs to be at least 15 letters' do
+    recipe = Recipe.new(title: 'a' * 8, about: 'a' * 10)
+
+    assert_not recipe.save
+
+    recipe = Recipe.new(title: 'a' * 8, about: 'a' * 14)
+
+    assert_not recipe.save
+
+    recipe = Recipe.new(title: 'a' * 8, about: 'a' * 30)
+
+    assert recipe.save
+
+  end
+
+  test 'recipe needs to be maximum of 250 letters' do
+    recipe = Recipe.new(title: 'a' * 8, about: 'a' * 145)
+
+    assert recipe.save
+
+    recipe = Recipe.new(title: 'a' * 8, about: 'a' * 330)
+
+    assert_not recipe.save
+
+    recipe = Recipe.new(title: 'a' * 8, about: 'a' * 251)
+
+    assert_not recipe.save
   end
 
 
