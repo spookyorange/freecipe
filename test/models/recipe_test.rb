@@ -37,7 +37,6 @@ class RecipeTest < ActiveSupport::TestCase
     assert_not recipe.save
   end
 
-
   test 'recipe about needs to be at least 15 letters' do
     recipe = Recipe.new(title: 'a' * 8, about: 'a' * 10)
 
