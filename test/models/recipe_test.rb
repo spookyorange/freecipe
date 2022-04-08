@@ -40,4 +40,6 @@ class RecipeTest < ActiveSupport::TestCase
     assert_not recipe0.save, "title is too long"
     assert recipe1.save, "title is enough"
   end
+
+
 end
