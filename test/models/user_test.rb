@@ -24,4 +24,15 @@ class UserTest < ActiveSupport::TestCase
 
     assert_not user.save
   end
+
+  test 'user should have an at least 8 chars long password' do
+    user = User.new(username: 'a' * 9, email: 'haha@haha.com', password: 'a' * 7)
+
+    assert_not user.save
+
+    user = User.new(username: 'a' * 9, email: 'haha@haha.com', password: 'a' * 12)
+
+    assert user.save
+  end
+
 end
