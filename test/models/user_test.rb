@@ -1,7 +1,27 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'user must have a username' do
+    user = User.new(email: 'haha@haha.com', password: 'la' * 5)
+
+    assert_not user.save
+
+    user = User.new(username: 'a' * 9, email: 'haha@haha.com', password: 'la' * 5)
+
+    assert user.save
+  end
+
+  test 'username must be at least 4 chars long and at most 16 chars' do
+    user = User.new(username: 'a' * 3, email: 'haha@haha.com', password: 'la' * 5)
+
+    assert_not user.save
+
+    user = User.new(username: 'a' * 9, email: 'haha@haha.com', password: 'la' * 5)
+
+    assert user.save
+
+    user = User.new(username: 'a' * 17, email: 'haha@haha.com', password: 'la' * 5)
+
+    assert_not user.save
+  end
 end

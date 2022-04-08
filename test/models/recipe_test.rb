@@ -66,5 +66,13 @@ class RecipeTest < ActiveSupport::TestCase
     assert_not recipe.save
   end
 
+  test 'recipe must have a user' do
+    recipe = Recipe.new(title: 'a' * 5, about: 'a' * 120)
 
+    assert_not recipe.save
+
+    recipe = Recipe.new(user: users(:regular), title: 'a' * 5, about: 'a' * 120)
+
+    assert recipe.save
+  end
 end
