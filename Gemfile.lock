@@ -232,7 +232,6 @@ DEPENDENCIES
   devise (~> 4.8, >= 4.8.1)
   importmap-rails
   jbuilder
-  minitest (~> 5.15)
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.3)
   selenium-webdriver
