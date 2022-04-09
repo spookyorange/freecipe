@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     resources :steps, only: [ :create, :update, :destroy ]
   end
 
-  resources :profiles, except: :destroy
+  resources :profiles, except: [ :destroy, :index ]
 end
