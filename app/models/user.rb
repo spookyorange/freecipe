@@ -4,8 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :recipes
+  has_one :profile
 
-  validates :username, presence: true, length: { minimum: 4, maximum: 16 }
   validates :password, presence: true, length: { minimum: 8 }
 end

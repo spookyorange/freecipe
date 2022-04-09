@@ -5,6 +5,13 @@
 # below each fixture, per the syntax in the comments below
 #
 regular:
-  username: someusername
   email: korkmazcoltu@mail.ru
   encrypted_password: somerealsecurepassword
+
+userone:
+  email: haha@hahah
+  encrypted_password: iamseriousitis
+
+usertwo:
+  email: lalalal@aalala
+  encrypted_password: noimjustaclownsad

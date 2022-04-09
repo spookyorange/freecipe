@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_08_121252) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_09_102042) do
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.integer "quantity"
@@ -20,13 +20,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_08_121252) do
     t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "title"
     t.text "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_recipes_on_user_id"
+    t.integer "profile_id"
+    t.index ["profile_id"], name: "index_recipes_on_profile_id"
   end
 
   create_table "steps", force: :cascade do |t|
@@ -48,11 +56,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_08_121252) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "ingredients", "recipes"
+  add_foreign_key "profiles", "users"
   add_foreign_key "steps", "recipes"
 end
