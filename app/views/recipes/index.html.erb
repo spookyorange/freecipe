@@ -1,0 +1,8 @@
+<h1>This is homepage placeholder</h1>
+<p>This will change in the future for sure, I want to make this project my masterpiece</p>
+<br>
+<% @recipes.each do |recipe| %>
+  <h2><%= link_to recipe.title, recipe_path(recipe) %></h2>
+  <p><%= recipe.about %></p>
+  <br>
+<% end %>
