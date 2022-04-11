@@ -9,6 +9,8 @@ class CreateProfiles < ActiveRecord::Migration[7.0]
 
     remove_belongs_to :recipes, :user
     add_belongs_to :recipes, :profile
-    remove_column :users, :username
+    change_table :users do |t|
+      t.remove :username
+    end
   end
 end
