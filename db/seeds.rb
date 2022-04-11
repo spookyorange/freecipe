@@ -13,16 +13,16 @@ User.create([
             ])
 
 Profile.create([
-                 { user_id: User.first.id, username: 'cool dude' },
-                 { user_id: User.second.id, username: 'not cool dude' }
+                 { user: User.first, username: 'cool dude' },
+                 { user: User.second, username: 'not cool dude' }
 
                ])
 
 Recipe.create([
-                { profile_id: Profile.first.id,
+                { profile: Profile.first,
                   title: 'Pasta with Cream',
                   about: 'It is a pasta that has been made with cream and it is delicious' },
-                { profile_id: Profile.second.id,
+                { profile: Profile.second,
                   title: 'How to install linux',
                   about: 'I am going to show you how to make a live boot usb and
 how to use it to install a Linux distro' }
