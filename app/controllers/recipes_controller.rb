@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
 
 
   def authenticate_owner
-    if current_user.profile.recipes.exclude?(Recipe.find(params[:id]))
+    if !user_signed_in? || current_user.profile.nil? || current_user.profile.recipes.exclude?(Recipe.find(params[:id]))
       redirect_to recipe_url(params[:id])
     end
   end

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_profile
+  before_action :authenticate_profile, except: :destroy
   def authenticate_profile
     if current_user && current_user.profile.nil?
       redirect_to new_profile_path
