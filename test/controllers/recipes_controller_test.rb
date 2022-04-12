@@ -46,4 +46,12 @@ class RecipesControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
+  test "if user is signed in but doesn't have a profile and tries to delete a recipe gets redirected" do
+    sign_out :user
+    sign_in users(:three)
+
+    delete recipe_url(1)
+    assert_response :redirect
+  end
+
 end
