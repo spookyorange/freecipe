@@ -9,7 +9,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-
   def new
     @profile = Profile.new
   end
