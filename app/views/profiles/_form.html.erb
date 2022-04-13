@@ -1,4 +1,7 @@
-<%= form_with model: profile do |f| %>
+<%= form_with model: profile, data: { turbo: false } do |f| %>
+  <% profile.errors[:username].each do |error| %>
+    <div>Username <%= error %></div>
+  <% end %>
   <%= f.label :username %>
   <br>
   <%= f.text_field :username %>
