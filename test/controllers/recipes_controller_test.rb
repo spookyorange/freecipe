@@ -41,6 +41,21 @@ class RecipesControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
+  test "if user is signed in but tries to edit someone else's recipe they get redirected" do
+    get recipe_url(2)
+    assert_response :success
+    assert_select 'h1', 'a' * 10
+
+    patch recipe_url(2),
+          params: { recipe: { title: 'a' * 18,
+                              about: 'a' * 50 } }
+    assert_response :redirect
+    follow_redirect!
+    assert_response :success
+    assert_select 'h1', 'a' * 10
+
+  end
+
   test 'if user tries to delete a recipe that does not belong to them they get redirected to the index' do
     delete recipe_url(2)
     assert_response :redirect
