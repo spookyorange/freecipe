@@ -1,8 +1,14 @@
-<%= form_with model: recipe do |f| %>
+<%= form_with model: recipe, data: { turbo: false } do |f| %>
+  <% recipe.errors[:title].each do |error| %>
+    <div>Title <%= error %></div>
+  <% end %>
   <%= f.label :title %>
   <br>
   <%= f.text_field :title %>
   <br><br>
+  <% recipe.errors[:about].each do |error| %>
+    <div>About <%= error %></div>
+  <% end %>
   <%= f.label :about %>
   <br>
   <%= f.text_area :about %>
