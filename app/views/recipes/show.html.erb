@@ -2,12 +2,13 @@
 <p><%= @recipe.about %></p>
 
 <%= link_to 'Edit Recipe', edit_recipe_url(@recipe) %>
-<% if current_user && current_user.profile && current_user.profile == @recipe.profile %>
-  <%= render 'ingredients/form', recipe: @recipe, ingredient: Ingredient.new  %>
-<% end %>
 
 <% @recipe.ingredients.each do |ing| %>
-  <div><%= ing.quantity %> <%= ing.name %></div>
+  <%= render 'ingredients/ing', recipe: @recipe, ingredient: ing %>
+<% end %>
+
+<% if current_user && current_user.profile && current_user.profile == @recipe.profile %>
+  <%= render 'ingredients/form', recipe: @recipe, ingredient: Ingredient.new  %>
 <% end %>
 
 <%= link_to 'Get Back', recipes_url %>

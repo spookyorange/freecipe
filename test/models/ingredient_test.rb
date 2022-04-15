@@ -11,8 +11,8 @@ class IngredientTest < ActiveSupport::TestCase
     assert ingredient.save
   end
 
-  test 'ingredient must have a name of 6 to 16 chars' do
-    ingredient = Ingredient.new(recipe: recipes(:one), name: 'a' * 5, quantity: 6)
+  test 'ingredient must have a name of 3 to 16 chars' do
+    ingredient = Ingredient.new(recipe: recipes(:one), name: 'a' * 2, quantity: 6)
 
     assert_not ingredient.save
 

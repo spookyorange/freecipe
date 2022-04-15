@@ -1,0 +1,6 @@
+<% if current_user && current_user.profile && current_user.profile == @recipe.profile %>
+  <%= render 'ingredients/form', recipe: recipe, ingredient: ingredient %>
+  <%= button_to 'delete ingredient', recipe_ingredient_url(recipe, ingredient), data: { turbo_method: false }, method: :delete %>
+<% else %>
+  <div><%= ing.quantity %> <%= ing.name %></div>
+<% end %>

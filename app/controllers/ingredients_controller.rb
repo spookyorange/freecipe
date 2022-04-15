@@ -28,9 +28,11 @@ class IngredientsController < ApplicationController
     @recipe = @ingredient.recipe
 
     if @ingredient.update(ingredient_params)
+      flash[:notice] = 'Ingredient updated successfully'
       redirect_to @recipe
     else
-      render @recipe
+      flash[:alert] = 'Something went wrong'
+      redirect_to @recipe
     end
   end
 
@@ -39,6 +41,7 @@ class IngredientsController < ApplicationController
     @recipe = @ingredient.recipe
 
     @ingredient.destroy
+    flash[:notice] = 'ingredient deleted successfully'
     redirect_to @recipe
 
   end
