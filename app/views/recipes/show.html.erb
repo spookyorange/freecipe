@@ -7,8 +7,17 @@
   <%= render 'ingredients/ing', recipe: @recipe, ingredient: ing %>
 <% end %>
 
+<% @recipe.steps.each do |step| %>
+  <%= render 'steps/step', recipe: @recipe, step: step %>
+<% end %>
+
+
 <% if current_user && current_user.profile && current_user.profile == @recipe.profile %>
   <%= render 'ingredients/form', recipe: @recipe, ingredient: Ingredient.new  %>
+<% end %>
+
+<% if current_user && current_user.profile && current_user.profile == @recipe.profile %>
+  <%= render 'steps/form', recipe: @recipe, step: Step.new  %>
 <% end %>
 
 <%= link_to 'Get Back', recipes_url %>

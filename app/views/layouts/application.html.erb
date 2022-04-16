@@ -17,7 +17,7 @@
     <% elsif user_signed_in? && !current_user.profile %>
       <%= link_to 'Sign Out', destroy_user_session_url, data: { turbo_method: :delete } %>
   <% else %>
-      <p>Hey there, <%= current_user.profile.username %></p>
+      <p>Hey there, <%= link_to current_user.profile.username, profile_url(current_user.profile) %></p>
       <%= link_to 'Sign Out', destroy_user_session_url, data: { turbo_method: :delete } %>
       <%= link_to 'Recipes', recipes_url %>
   <% end %>
