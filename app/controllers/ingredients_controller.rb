@@ -10,40 +10,35 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    @ingredient = Ingredient.new(ingredient_params)
     @recipe = Recipe.find(params[:recipe_id])
-    @ingredient.recipe = @recipe
-
+    @ingredient = @recipe.ingredients.new(ingredient_params)
     if @ingredient.save
-        flash[:notice] = 'Ingredient saved successfully'
-        redirect_to @recipe
+      flash[:notice] = 'Ingredient created successfully'
     else
       flash[:alert] = 'Something went wrong'
-      redirect_to @recipe
     end
+    redirect_to @recipe
   end
 
   def update
-    @ingredient = Ingredient.find(params[:id])
-    @recipe = @ingredient.recipe
+    @recipe = Recipe.find(params[:recipe_id])
+    @ingredient = @recipe.ingredients.find(params[:id])
 
     if @ingredient.update(ingredient_params)
       flash[:notice] = 'Ingredient updated successfully'
-      redirect_to @recipe
     else
       flash[:alert] = 'Something went wrong'
-      redirect_to @recipe
     end
+    redirect_to @recipe
   end
 
   def destroy
-    @ingredient = Ingredient.find(params[:id])
-    @recipe = @ingredient.recipe
+    @recipe = Recipe.find(params[:recipe_id])
+    @ingredient = @recipe.ingredients.find(params[:id])
 
     @ingredient.destroy
     flash[:notice] = 'ingredient deleted successfully'
-    redirect_to @recipe
-
+    redirect_to @recipe, status: 303
   end
 
   private

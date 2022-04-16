@@ -4,7 +4,7 @@
 <%= link_to 'Edit Recipe', edit_recipe_url(@recipe) %>
 
 <% @recipe.ingredients.each do |ing| %>
-  <%= render 'ingredients/ing', recipe: @recipe, ingredient: ing %>
+  <%= render 'ingredients/ing', ingredient: ing %>
 <% end %>
 
 <% @recipe.steps.each do |step| %>
@@ -12,11 +12,11 @@
 <% end %>
 
 
-<% if current_user && current_user.profile && current_user.profile == @recipe.profile %>
-  <%= render 'ingredients/form', recipe: @recipe, ingredient: Ingredient.new  %>
+<% if user_signed_in? && current_user.profile && current_user.profile == @recipe.profile %>
+  <%= render 'ingredients/form', recipe: @recipe %>
 <% end %>
 
-<% if current_user && current_user.profile && current_user.profile == @recipe.profile %>
+<% if user_signed_in? && current_user.profile && current_user.profile == @recipe.profile %>
   <%= render 'steps/form', recipe: @recipe, step: Step.new  %>
 <% end %>
 
