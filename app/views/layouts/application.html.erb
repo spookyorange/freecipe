@@ -16,11 +16,11 @@
       <%= link_to 'Recipes', recipes_url %>
     <% elsif user_signed_in? && !current_user.profile %>
       <%= link_to 'Sign Out', destroy_user_session_url, data: { turbo_method: :delete } %>
-  <% else %>
+    <% else %>
       <p>Hey there, <%= link_to current_user.profile.username, profile_url(current_user.profile) %></p>
       <%= link_to 'Sign Out', destroy_user_session_url, data: { turbo_method: :delete } %>
       <%= link_to 'Recipes', recipes_url %>
-  <% end %>
+    <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
