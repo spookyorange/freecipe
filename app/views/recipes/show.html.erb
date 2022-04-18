@@ -7,23 +7,18 @@
   <% @recipe.ingredients.each do |ing| %>
     <%= render 'ingredients/ing_update', ingredient: ing %>
   <% end %>
+  <% @recipe.steps.each do |step| %>
+    <%= render 'steps/step_update', step: step %>
+  <% end %>
+  <%= render 'ingredients/form', recipe: @recipe %>
+  <%= render 'steps/form', recipe: @recipe %>
 <% else %>
   <% @recipe.ingredients.each do |ing| %>
     <%= render 'ingredients/ing', ingredient: ing %>
   <% end %>
+  <% @recipe.steps.each do |step| %>
+    <%= render 'steps/step', step: step %>
+  <% end %>
 <% end  %>
-
-<% @recipe.steps.each do |step| %>
-  <%= render 'steps/step', recipe: @recipe, step: step %>
-<% end %>
-
-
-<% if user_signed_in? && current_user.profile && current_user.profile == @recipe.profile %>
-  <%= render 'ingredients/form', recipe: @recipe %>
-<% end %>
-
-<% if user_signed_in? && current_user.profile && current_user.profile == @recipe.profile %>
-  <%= render 'steps/form', recipe: @recipe, step: Step.new  %>
-<% end %>
 
 <%= link_to 'Get Back', recipes_url %>
