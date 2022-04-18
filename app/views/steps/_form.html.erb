@@ -1,4 +1,4 @@
-<%= form_with model: [ recipe, step], data: { turbo_method: false } do |f| %>
+<%= form_with model: [ recipe, recipe.steps.create ], data: { turbo: false } do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :description %>
@@ -8,5 +8,4 @@
   <%= f.label :order %>
   <%= f.number_field :order %>
   <%= f.submit %>
-
 <% end %>

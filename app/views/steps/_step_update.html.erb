@@ -1,0 +1,14 @@
+<%= form_with model: [ step.recipe, step ], data: { turbo: false } do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <%= f.label :time_consumption %>
+  <%= f.number_field :time_consumption %>
+  <%= f.label :order %>
+  <%= f.number_field :order %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'delete step', recipe_step_path(step.recipe, step), data: { turbo_method: :delete,
+                                                                        turbo_confirm: 'Are You sure'} %>
