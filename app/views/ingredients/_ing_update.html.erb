@@ -5,3 +5,5 @@
   <%= f.text_field :name %>
   <%= f.submit %>
 <% end %>
+<%= link_to 'delete ingredient', [ingredient.recipe, ingredient], data: { turbo_method: :delete,
+                                                                          turbo_confirm: 'Are you sure?' } %>
