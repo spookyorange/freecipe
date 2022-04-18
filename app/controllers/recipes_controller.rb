@@ -23,8 +23,11 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.save
 
-    if @recipe.save
+    if @recipe.errors.size == 1
+      @recipe.profile = current_user.profile
+      @recipe.save
       flash[:notice] = 'You have created a Recipe'
       redirect_to @recipe
     else
