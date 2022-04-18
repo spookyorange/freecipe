@@ -3,9 +3,15 @@
 
 <%= link_to 'Edit Recipe', edit_recipe_url(@recipe) %>
 
-<% @recipe.ingredients.each do |ing| %>
-  <%= render 'ingredients/ing', ingredient: ing %>
-<% end %>
+<% if user_signed_in? && current_user.profile && current_user.profile == @recipe.profile %>
+  <% @recipe.ingredients.each do |ing| %>
+    <%= render 'ingredients/ing_update', ingredient: ing %>
+  <% end %>
+<% else %>
+  <% @recipe.ingredients.each do |ing| %>
+    <%= render 'ingredients/ing', ingredient: ing %>
+  <% end %>
+<% end  %>
 
 <% @recipe.steps.each do |step| %>
   <%= render 'steps/step', recipe: @recipe, step: step %>
