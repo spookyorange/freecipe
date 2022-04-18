@@ -10,9 +10,11 @@ class StepsController < ApplicationController
 
   def create
     @step = Step.new(step_params)
-    @step.recipe = @recipe
+    @step.save
 
-    if @step.save
+    if @step.errors.size == 1
+      @step.recipe = @recipe
+      @step.save
       flash[:notice] = 'Step successfully saved'
     else
       flash[:alert] = 'Something went wrong'
