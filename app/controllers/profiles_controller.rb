@@ -15,10 +15,11 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    @profile.user = current_user
+    @profile.save
 
-    if @profile.save
-      redirect_to @profile
+    if @profile.errors[:username].none?
+      current_user.profile = @profile
+      redirect_to root_path
     else
       render :new
     end
