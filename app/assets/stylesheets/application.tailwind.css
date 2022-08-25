@@ -16,11 +16,11 @@
     }
 
     .index-recipe-container {
-        @apply mt-8 flex flex-col md:flex-row justify-between gap-8;
+        @apply mt-8 flex flex-col justify-between gap-8;
     }
 
     .index-recipe {
-        @apply flex flex-col justify-center items-center gap-2 text-center;
+        @apply flex flex-col justify-center items-center gap-2 text-center bg-blue-400/40 p-8 rounded-xl;
     }
 
     .index-recipe h2 {
@@ -28,6 +28,13 @@
     }
 
     .index-recipe p {
-        @apply text-lg italic;
+        @apply italic opacity-80;
+    }
+
+    @media (min-width: 768px) {
+        .index-recipe-container {
+            @apply grid gap-8;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
     }
 }

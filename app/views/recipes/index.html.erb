@@ -1,12 +1,12 @@
 <h1 class="index-header">This is <span class="text-purple-800">THE</span> homepage placeholder</h1>
-<p class="text-sm italic">This will change in the future for sure, I want to make this project my
+<p class="text-center text-sm italic">This will change in the future for sure, I want to make this project my
   masterpiece</p>
 
 <div class="index-recipe-container">
   <% @recipes.each do |recipe| %>
     <div class="index-recipe">
       <h2><%= link_to recipe.title, recipe_path(recipe) %></h2>
-      <p><%= recipe.about %></p>
+      <p>by <%= recipe.profile.username %></p>
     </div>
   <% end %>
 </div>
