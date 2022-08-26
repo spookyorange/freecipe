@@ -32,13 +32,17 @@
           </div>
         <% end %>
       <% else %>
-        <div class="flex flex-col group">
-          <div class="navbar-vector group">
+        <div data-controller="dropdown" class="flex flex-col">
+          <div data-action="click->dropdown#dropdownToggle" class="navbar-vector group">
             <%= inline_svg_tag "account.svg", :class => "navbar-vector-svg group-hover:fill-white" %>
             <span class="navbar-vector-name group-hover:text-white"><%= current_user.profile.username %></span>
           </div>
-          <ul class="hidden group-focus:account-dropdown group-hover:account-dropdown">
-            <li class="">asdasda</li>
+          <ul data-dropdown-target="itself" class="account-dropdown hidden">
+            <li class="">
+              <%= link_to destroy_user_session_url, data: { turbo_method: :delete } do %>
+                Log Out
+              <% end %>
+            </li>
           </ul>
         </div>
       <% end %>

@@ -4,7 +4,7 @@
 
 @layer components {
     .profile-stuff-container {
-        @apply flex justify-between items-center md:justify-end text-blue-800 gap-8 text-lg;
+        @apply flex justify-between items-center md:justify-end text-blue-800 gap-8 text-lg select-none;
     }
 
     .profile-stuff-container > a > .profile-stuff-button {
@@ -49,8 +49,12 @@
     }
 
     .account-dropdown > li {
-        @apply absolute w-full flex justify-center items-center bg-blue-800 text-white py-3 rounded-xl hover:cursor-pointer;
-        
+        @apply absolute z-20 w-full flex justify-center items-center bg-blue-200 text-blue-800 rounded-xl hover:cursor-pointer mt-2;
+        @apply hover:bg-blue-800 hover:text-white transition-all duration-200 ease-in-out;
+    }
+
+    .account-dropdown > li > a {
+        @apply w-full h-full flex justify-center items-center py-3;
     }
 
     @media (min-width: 768px) {
