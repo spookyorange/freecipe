@@ -7,7 +7,7 @@
         @apply flex justify-between items-center md:justify-end text-blue-800 gap-8 text-lg;
     }
 
-    .profile-stuff-container > .profile-stuff-button > a {
+    .profile-stuff-container > a > .profile-stuff-button {
         @apply bg-blue-200 p-4 rounded-xl hover:bg-blue-800 hover:text-white transition-all duration-200 ease-in-out;
     }
 
@@ -31,16 +31,16 @@
         @apply italic opacity-80;
     }
 
-    .account-vector {
-        @apply bg-blue-200 hover:bg-blue-800 rounded-lg p-[2.5px] transition-all duration-200 ease-in-out hover:cursor-pointer;
+    .navbar-vector {
+        @apply bg-blue-200 hover:bg-blue-800 rounded-lg p-[2px] transition-all duration-200 ease-in-out hover:cursor-pointer;
         @apply flex justify-center items-center gap-4 pr-4;
     }
 
-    .account-vector-svg {
-        @apply w-12 h-12 transition-all duration-200 ease-in-out;
+    .navbar-vector-svg {
+        @apply w-14 h-14 transition-all duration-200 ease-in-out;
     }
 
-    .account-vector-name {
+    .navbar-vector-name {
         @apply transition-all duration-200 ease-in-out;
     }
 
