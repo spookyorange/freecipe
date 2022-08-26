@@ -44,6 +44,15 @@
         @apply transition-all duration-200 ease-in-out;
     }
 
+    .account-dropdown {
+        @apply relative flex flex-col grow;
+    }
+
+    .account-dropdown > li {
+        @apply absolute w-full flex justify-center items-center bg-blue-800 text-white py-3 rounded-xl hover:cursor-pointer;
+        
+    }
+
     @media (min-width: 768px) {
         .index-recipe-container {
             @apply grid gap-8;

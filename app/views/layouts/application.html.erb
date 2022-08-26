@@ -32,9 +32,14 @@
           </div>
         <% end %>
       <% else %>
-        <div class="navbar-vector group">
-          <%= inline_svg_tag "account.svg", :class => "navbar-vector-svg group-hover:fill-white" %>
-          <span class="navbar-vector-name group-hover:text-white"><%= current_user.profile.username %></span>
+        <div class="flex flex-col group">
+          <div class="navbar-vector group">
+            <%= inline_svg_tag "account.svg", :class => "navbar-vector-svg group-hover:fill-white" %>
+            <span class="navbar-vector-name group-hover:text-white"><%= current_user.profile.username %></span>
+          </div>
+          <ul class="hidden group-focus:account-dropdown group-hover:account-dropdown">
+            <li class="">asdasda</li>
+          </ul>
         </div>
       <% end %>
     <% end %>
