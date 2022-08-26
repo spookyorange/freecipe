@@ -4,7 +4,7 @@
 
 @layer components {
     .profile-stuff-container {
-        @apply flex justify-between md:justify-end text-blue-800 gap-8 text-lg;
+        @apply flex justify-between items-center md:justify-end text-blue-800 gap-8 text-lg;
     }
 
     .profile-stuff-container > .profile-stuff-button > a {
@@ -29,6 +29,14 @@
 
     .index-recipe p {
         @apply italic opacity-80;
+    }
+
+    .account-vector {
+        @apply bg-blue-200 hover:bg-blue-800 rounded-lg p-[2.5px] transition-all duration-200 ease-in-out hover:cursor-pointer;
+    }
+
+    .account-vector-svg {
+        @apply w-12 h-12 transition-all duration-200 ease-in-out;
     }
 
     @media (min-width: 768px) {

@@ -14,15 +14,17 @@
 <body class="flex flex-col p-4 gap-2">
 <navbar class="flex flex-col gap-4">
   <div class="profile-stuff-container mt-2">
-    <% if !user_signed_in? %>
-      <div class="profile-stuff-button"><%= link_to 'Recipes', recipes_url, :class => "profile-stuff-button" %></div>
-      <div class="profile-stuff-button"><%= link_to 'Sign In', new_user_session_url %></div>
-    <% elsif user_signed_in? && !current_user.profile %>
-      <div class="profile-stuff-button"><%= link_to 'Sign Out', destroy_user_session_url, data: { turbo_method: :delete } %></div>
+    <% if user_signed_in? && !current_user.profile %>
+      <div class="profile-stuff-button mt-2"><%= link_to 'Sign Out', destroy_user_session_url, data: { turbo_method: :delete } %></div>
     <% else %>
       <div class="profile-stuff-button"><%= link_to 'Recipes', recipes_url %></div>
-      <p>Hey there, <%= link_to current_user.profile.username, profile_url(current_user.profile) %></p>
-      <div class="profile-stuff-button"><%= link_to 'Sign Out', destroy_user_session_url, data: { turbo_method: :delete } %></div>
+      <% if !user_signed_in? %>
+        <div class="profile-stuff-button"><%= link_to 'Sign In', new_user_session_url %></div>
+      <% else %>
+        <div class="account-vector group">
+          <%= inline_svg_tag "account.svg", :class => "account-vector-svg group-hover:fill-white" %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </navbar>
