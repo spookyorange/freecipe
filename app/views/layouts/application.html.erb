@@ -23,6 +23,7 @@
       <% else %>
         <div class="account-vector group">
           <%= inline_svg_tag "account.svg", :class => "account-vector-svg group-hover:fill-white" %>
+          <span class="account-vector-name group-hover:text-white"><%= current_user.profile.username %></span>
         </div>
       <% end %>
     <% end %>

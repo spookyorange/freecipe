@@ -33,10 +33,15 @@
 
     .account-vector {
         @apply bg-blue-200 hover:bg-blue-800 rounded-lg p-[2.5px] transition-all duration-200 ease-in-out hover:cursor-pointer;
+        @apply flex justify-center items-center gap-4 pr-4;
     }
 
     .account-vector-svg {
         @apply w-12 h-12 transition-all duration-200 ease-in-out;
+    }
+
+    .account-vector-name {
+        @apply transition-all duration-200 ease-in-out;
     }
 
     @media (min-width: 768px) {
