@@ -8,7 +8,12 @@
     }
 
     .profile-stuff-container > a > .profile-stuff-button {
-        @apply bg-blue-200 p-4 rounded-xl hover:bg-blue-800 hover:text-white transition-all duration-200 ease-in-out;
+        @apply bg-blue-200 hover:bg-blue-800 hover:text-white button-styling;
+    }
+
+
+    .button-styling {
+        @apply p-4 rounded-lg transition-timing hover:text-white;
     }
 
     .index-header {
