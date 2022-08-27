@@ -1,40 +1,22 @@
 <div class="flex flex-col items-center gap-2 max-w-screen overflow-scroll">
   <div class="text-center flex flex-col gap-4 mb-4 md:max-w-[70vw]">
-    <h1 class="text-3xl font-bold"><%= @recipe.title %></h1>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-4 gap-x-8">
+      <h1 class="text-3xl font-bold"><%= @recipe.title %></h1>
+      <% if user_signed_in? && current_user.profile && current_user.profile == @recipe.profile %>
+        <%= link_to edit_recipe_url(@recipe),
+                    :class => "flex justify-center bg-blue-200 hover:bg-blue-800 button-styling" do %>
+          Edit Recipe
+        <% end %>
+      <% end %>
+    </div>
     <p class="text-lg underline"><%= @recipe.about %></p>
   </div>
+</div>
 
-  <% if user_signed_in? && current_user.profile && current_user.profile == @recipe.profile %>
-    <div class="flex justify-center gap-8 mb-4">
-      <%= link_to edit_recipe_url(@recipe), :class => "flex justify-center" do %>
-        <div class="bg-blue-200 p-4 rounded-lg hover:bg-blue-800 hover:text-white transition-timing">Edit Recipe</div>
-      <% end %>
-      <%= link_to recipe_path(@recipe),
-                  data: {
-                    turbo_method: :delete,
-                    turbo_confirm: 'Are you sure you want to delete this recipe?'
-                  }, :class => "flex justify-center" do %>
-        <div class="bg-red-200 p-4 rounded-lg hover:bg-red-800 hover:text-white transition-timing">Delete Recipe</div>
-      <% end %>
-    </div>
-    </div>
-    <div>
-      <% @recipe.ingredients.each do |ing| %>
-        <%= render 'ingredients/ing_update', ingredient: ing %>
-      <% end %>
-      <% @recipe.steps.each do |step| %>
-        <%= render 'steps/step_update', step: step %>
-      <% end %>
-      <%= render 'ingredients/form', recipe: @recipe %>
-      <%= render 'steps/form', recipe: @recipe %>
-  <% else %>
-    <% @recipe.ingredients.each do |ing| %>
-      <%= render 'ingredients/ing', ingredient: ing %>
-    <% end %>
-    <% @recipe.steps.each do |step| %>
-      <%= render 'steps/step', step: step %>
-    <% end %>
-  <% end %>
-  </div>
 
-  <%= link_to 'Get Back', recipes_url %>
+<% @recipe.ingredients.each do |ing| %>
+  <%= render 'ingredients/ing', ingredient: ing %>
+<% end %>
+<% @recipe.steps.each do |step| %>
+  <%= render 'steps/step', step: step %>
+<% end %>
