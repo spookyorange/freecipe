@@ -4,7 +4,7 @@
 
 @layer components {
     .profile-stuff-container {
-        @apply flex justify-between items-center md:justify-end text-blue-800 gap-8 text-lg select-none;
+        @apply flex justify-between items-center text-blue-800 gap-8 text-lg select-none;
     }
 
     .profile-stuff-container > a > .profile-stuff-button {
@@ -32,16 +32,12 @@
     }
 
     .navbar-vector {
-        @apply bg-blue-200 hover:bg-blue-800 rounded-lg p-[2px] transition-all duration-200 ease-in-out hover:cursor-pointer;
+        @apply bg-blue-200 hover:bg-blue-800 rounded-lg p-[2px] transition-timing hover:cursor-pointer;
         @apply flex justify-center items-center gap-4 pr-4;
     }
 
     .navbar-vector-svg {
-        @apply w-14 h-14 transition-all duration-200 ease-in-out;
-    }
-
-    .navbar-vector-name {
-        @apply transition-all duration-200 ease-in-out;
+        @apply w-14 h-14 transition-timing;
     }
 
     .account-dropdown {
@@ -55,6 +51,10 @@
 
     .account-dropdown > li > a {
         @apply w-full h-full flex justify-center items-center py-3;
+    }
+
+    .transition-timing {
+        @apply transition-all duration-200 ease-in-out;
     }
 
     @media (min-width: 768px) {

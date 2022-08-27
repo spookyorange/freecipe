@@ -22,7 +22,7 @@
       <%= link_to recipes_url do %>
         <div class="navbar-vector group">
           <%= inline_svg_tag 'book.svg', :class => "navbar-vector-svg group-hover:fill-white" %>
-          <span class="navbar-vector-name group-hover:text-white">Recipes</span>
+          <span class="transition-timing group-hover:text-white">Recipes</span>
         </div>
       <% end %>
       <% if !user_signed_in? %>
@@ -35,7 +35,7 @@
         <div data-controller="dropdown" class="flex flex-col">
           <div data-action="click->dropdown#dropdownToggle" class="navbar-vector group">
             <%= inline_svg_tag "account.svg", :class => "navbar-vector-svg group-hover:fill-white" %>
-            <span class="navbar-vector-name group-hover:text-white"><%= current_user.profile.username %></span>
+            <span class="transition-timing group-hover:text-white"><%= current_user.profile.username %></span>
           </div>
           <ul data-dropdown-target="itself" class="account-dropdown hidden">
             <li class="">
