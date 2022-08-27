@@ -2,7 +2,6 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :authenticate_owner, only: [:edit, :update, :destroy]
 
-
   def authenticate_owner
     if !user_signed_in? || current_user.profile.nil? || current_user.profile.recipes.exclude?(Recipe.find(params[:id]))
       redirect_to recipe_url(params[:id])
@@ -52,6 +51,9 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+
+    redirect_to root_path, status: :see_other
   end
 
   private
