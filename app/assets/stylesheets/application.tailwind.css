@@ -72,6 +72,19 @@
         @apply button-styling bg-blue-200 hover:bg-blue-800;
     }
 
+    .green-button {
+        @apply button-styling bg-green-200 hover:bg-green-800;
+    }
+
+    .purple-button {
+        @apply button-styling bg-purple-200 hover:bg-purple-800;
+    }
+
+    .red-button {
+        @apply button-styling bg-red-200 hover:bg-red-800;
+    }
+
+
     /* end */
     @media (min-width: 768px) {
         .index-recipe-container {
