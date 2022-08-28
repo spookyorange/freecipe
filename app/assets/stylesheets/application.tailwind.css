@@ -84,6 +84,28 @@
         @apply button-styling bg-red-200 hover:bg-red-800;
     }
 
+    .amber-button {
+        @apply button-styling bg-amber-200 hover:bg-amber-800;
+    }
+
+    /* end */
+    /* form-related */
+    .general-form {
+        @apply flex flex-col justify-center items-center gap-4;
+    }
+
+    .input-area-container {
+        @apply flex flex-col justify-center items-center gap-2;
+    }
+
+    .input-area-general {
+        @apply text-center rounded-lg p-2 border-2 border-blue-400 ;
+        @apply hover:border-blue-600 focus:border-blue-800 focus:outline-none;
+    }
+
+    .label-general {
+        @apply text-center text-blue-800 w-24 font-bold;
+    }
 
     /* end */
     @media (min-width: 768px) {
