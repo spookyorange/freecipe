@@ -3,19 +3,11 @@
 @tailwind utilities;
 
 @layer components {
-    .profile-stuff-container {
+    .navbar-container {
         @apply flex justify-between items-center text-blue-800 gap-8 text-lg select-none;
     }
 
-    .profile-stuff-container > a > .profile-stuff-button {
-        @apply bg-blue-200 hover:bg-blue-800 hover:text-white button-styling;
-    }
-
-
-    .button-styling {
-        @apply p-4 rounded-lg transition-timing hover:text-white;
-    }
-
+    /* index page related stuff */
     .index-header {
         @apply text-4xl font-bold text-center;
     }
@@ -36,32 +28,51 @@
         @apply italic opacity-80;
     }
 
+    /* end */
+    /* buttons with vector images */
     .navbar-vector {
-        @apply bg-blue-200 hover:bg-blue-800 rounded-lg p-[2px] transition-timing hover:cursor-pointer;
-        @apply flex justify-center items-center gap-4 pr-4;
+        @apply blue-button rounded-lg p-[2px] flex justify-center items-center gap-4 pr-4;
     }
 
     .navbar-vector-svg {
         @apply w-14 h-14 transition-timing;
     }
 
+    /* end */
+    /* account navbar item dropdown */
     .account-dropdown {
         @apply relative flex flex-col grow;
     }
 
-    .account-dropdown > li {
-        @apply absolute z-20 w-full flex justify-center items-center bg-blue-200 text-blue-800 rounded-xl hover:cursor-pointer mt-2;
-        @apply hover:bg-blue-800 hover:text-white transition-all duration-200 ease-in-out;
+    .account-dropdown-list {
+        @apply absolute z-20 top-0 w-full;
     }
 
-    .account-dropdown > li > a {
-        @apply w-full h-full flex justify-center items-center py-3;
+    .account-dropdown-list > li {
+        @apply flex justify-center items-center mt-2;
     }
 
+    .account-dropdown-link {
+        @apply w-full flex justify-center items-center blue-button;
+    }
+
+    /* end */
+    /* transition timings */
     .transition-timing {
         @apply transition-all duration-200 ease-in-out;
     }
 
+    /* end */
+    /* custom button styles */
+    .button-styling {
+        @apply p-4 rounded-lg transition-timing hover:text-white hover:cursor-pointer;
+    }
+
+    .blue-button {
+        @apply button-styling bg-blue-200 hover:bg-blue-800;
+    }
+
+    /* end */
     @media (min-width: 768px) {
         .index-recipe-container {
             @apply grid gap-8;
