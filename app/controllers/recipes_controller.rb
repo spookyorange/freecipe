@@ -30,6 +30,7 @@ class RecipesController < ApplicationController
       flash[:notice] = 'You have created a Recipe'
       redirect_to @recipe
     else
+      flash[:alert] = 'haha'
       render :new
     end
   end
@@ -42,10 +43,11 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     if @recipe.update(recipe_params)
-      flash[:notice] = 'Recipe Updated'
-      redirect_to @recipe
+      flash.now[:success] = 'Recipe successfully updated!'
+      render turbo_stream: turbo_stream.update("flash", partial: "layouts/flash")
     else
-      render :edit
+      flash.now[:error] = 'Recipe Not Updated'
+      render turbo_stream: turbo_stream.update("flash", partial: "layouts/flash")
     end
   end
 

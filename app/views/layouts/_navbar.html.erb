@@ -1,0 +1,47 @@
+<navbar class="flex flex-col gap-4">
+  <div class="navbar-container mt-2">
+    <% if user_signed_in? && !current_user.profile %>
+      <%= link_to destroy_user_session_url, data: { turbo_method: :delete } do %>
+        <div class="blue-button">Sign Out</div>
+      <% end %>
+    <% else %>
+      <%= link_to recipes_url do %>
+        <div class="navbar-vector group">
+          <%= inline_svg_tag 'book.svg', :class => "navbar-vector-svg group-hover:fill-white" %>
+          <span class="transition-timing group-hover:text-white">Recipes</span>
+        </div>
+      <% end %>
+      <% if !user_signed_in? %>
+        <%= link_to new_user_session_url do %>
+          <div class="blue-button">
+            Sign In
+          </div>
+        <% end %>
+      <% else %>
+        <div data-controller="dropdown" class="flex flex-col">
+          <div data-action="click->dropdown#dropdownToggle" class="navbar-vector group">
+            <%= inline_svg_tag "account.svg", :class => "navbar-vector-svg group-hover:fill-white" %>
+            <span class="transition-timing group-hover:text-white"><%= current_user.profile.username %></span>
+          </div>
+          <div data-dropdown-target="itself" class="account-dropdown hidden">
+            <ul class="account-dropdown-list">
+              <li>
+                <%= link_to profile_path(current_user.profile),
+                            :class => "account-dropdown-link" do %>
+                  Your Profile
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_url,
+                            data: { turbo_method: :delete },
+                            :class => "account-dropdown-link" do %>
+                  Log Out
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</navbar>

@@ -5,14 +5,17 @@
   <% end %>
   <div class="input-area-container">
     <%= f.label :title, :class => "label-general" %>
-    <%= f.text_field :title, :class => "input-area-general" %>
+    <%= f.text_field :title, :placeholder => "min 4, max 20", :class => "input-area-general" %>
   </div>
   <div class="input-area-container">
     <% recipe.errors[:about].each do |error| %>
       <div>About <%= error %></div>
     <% end %>
     <%= f.label :about, :class => "label-general" %>
-    <%= f.text_area :about, :class => "input-area-general" %>
+    <%= f.text_area :about, :placeholder => "min 15, max 250", :class => "input-area-general w-full h-[6rem] xl:h-[10rem]" %>
   </div>
   <%= f.submit 'Lead the Others!', :class => "green-button mt-4" %>
+
 <% end %>
+
+
