@@ -13,13 +13,14 @@ module.exports = {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
       keyframes: {
-        killOpacity: {
-          '0%': {opacity: 1},
-          '100%': {opacity: 0},
+        initiateObjectThenKillOpacity: {
+          '0%': {scale: 1},
+          '50%': {opacity: 1, transform: 'scale(1.05)'},
+          '100%': {opacity: 0, transform: 'scale(0.85)'},
         }
       },
       animation: {
-        killOpacity: 'killOpacity 2s ease-in-out forwards',
+        initiateObjectThenKillOpacity: 'initiateObjectThenKillOpacity 2s ease-in-out forwards',
       },
     },
   },
