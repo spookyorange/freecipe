@@ -1,10 +1,9 @@
-<%= form_with model: profile, data: { turbo: false } do |f| %>
-  <% profile.errors[:username].each do |error| %>
-    <div>Username <%= error %></div>
+<%= form_with model: profile, :class => "general-form" do |f| %>
+  <turbo_frame id="profile-errors">
+  </turbo_frame>
+  <%= f.label :username, :class => "space-y-2 underline" do %>
+    <p>Username</p>
+    <%= f.text_field :username, :class => "input-area-general px-8 text-xl", placeholder: "grapepal123" %>
   <% end %>
-  <%= f.label :username %>
-  <br>
-  <%= f.text_field :username %>
-  <br><br>
-  <%= f.submit %>
+  <%= f.submit :class => "mt-4 blue-button" %>
 <% end %>

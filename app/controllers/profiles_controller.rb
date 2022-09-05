@@ -19,9 +19,15 @@ class ProfilesController < ApplicationController
 
     if @profile.errors[:username].none?
       current_user.profile = @profile
+      flash[:success] = "Profile has been created!"
       redirect_to root_path
     else
-      render :new
+      flash.now[:error] = 'Hmm, something went wrong'
+      render turbo_stream: [
+        turbo_stream.update("flash", partial: "layouts/flash"),
+        turbo_stream.update("profile-errors", partial: "profiles/profile_error",
+                            locals: { errors: @profile.errors[:username], attr: "Username" })
+      ]
     end
   end
 
