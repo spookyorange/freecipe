@@ -1,4 +1,4 @@
-<navbar class="flex flex-col gap-4">
+<navbar class="flex flex-col gap-4 mb-4">
   <div class="navbar-container mt-2">
     <% if user_signed_in? && !current_user.profile %>
       <%= link_to destroy_user_session_url, data: { turbo_method: :delete } do %>
