@@ -39,9 +39,14 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
 
     if @profile.update(profile_params)
+      flash[:success] = 'Username updated successfully!'
       redirect_to @profile
     else
-      render :edit
+      flash.now[:error] = 'Hmm, something went wrong'
+      respond_to do |format|
+        format.turbo_stream
+        format.html { render :edit }
+      end
     end
   end
 
