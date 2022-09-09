@@ -1,5 +1,7 @@
-<h1><%= @profile.username %></h1>
+<div class="flex flex-col items-center gap-8">
+  <h1 class="text-3xl underline"><%= @profile.username %></h1>
 
-<% if current_user && current_user.profile == @profile %>
-  <%= link_to 'Edit your profile', edit_profile_url(current_user.profile) %>
-<% end %>
+  <% if current_user && current_user.profile == @profile %>
+    <%= link_to 'Edit your profile', edit_profile_url(current_user.profile), :class => "blue-button" %>
+  <% end %>
+</div>
