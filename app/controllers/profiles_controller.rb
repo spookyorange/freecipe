@@ -23,11 +23,10 @@ class ProfilesController < ApplicationController
       redirect_to root_path
     else
       flash.now[:error] = 'Hmm, something went wrong'
-      render turbo_stream: [
-        turbo_stream.update("flash", partial: "layouts/flash"),
-        turbo_stream.update("profile-errors", partial: "profiles/profile_error",
-                            locals: { errors: @profile.errors[:username], attr: "Username" })
-      ]
+      respond_to do |format|
+        format.turbo_stream
+        format.html { render :new }
+      end
     end
   end
 
