@@ -35,7 +35,7 @@
     }
 
     .index-recipe {
-        @apply flex flex-col justify-center items-center gap-2 text-center bg-blue-400/40 p-8 rounded-xl;
+        @apply flex flex-col justify-center items-center gap-2 text-center bg-blue-400/40 p-8 border-2 border-blue-400 rounded-xl;
     }
 
     .index-recipe h2 {
