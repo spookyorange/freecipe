@@ -9,9 +9,11 @@
     <span class="text-orange-700">place</span>!</p>
 </div>
 
-<div class="flex flex-col items-center">
-  <%= link_to "Create Recipe", new_recipe_path, :class => "mt-8 green-button" %>
-</div>
+<% if user_signed_in? %>
+  <div class="flex flex-col items-center">
+    <%= link_to "Create Recipe", new_recipe_path, :class => "mt-8 green-button" %>
+  </div>
+<% end %>
 
 <div class="index-recipe-container">
   <% @recipes.each do |recipe| %>

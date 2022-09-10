@@ -3,11 +3,11 @@
 one:
   title: aaaaaaaaaa
   about: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  profile: one
+  profile_id: 1
   id: 1
 
 two:
   title: aaaaaaaaaa
   about: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  profile: two
+  profile_id: 2
   id: 2
