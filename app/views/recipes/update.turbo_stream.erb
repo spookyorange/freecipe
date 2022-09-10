@@ -1,0 +1,8 @@
+<%= turbo_stream.update "flash",
+                        partial: "layouts/flash" %>
+<%= turbo_stream.update "recipe-title-error",
+                        partial: "layouts/error_fragment",
+                        locals: { errors: @recipe.errors[:title], attr: "Title" } %>
+<%= turbo_stream.update "recipe-about-error",
+                        partial: "layouts/error_fragment",
+                        locals: { errors: @recipe.errors[:about], attr: "About" } %>

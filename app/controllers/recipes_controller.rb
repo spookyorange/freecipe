@@ -22,16 +22,17 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.save
+    @recipe.profile = current_user.profile
 
-    if @recipe.errors.size == 1
-      @recipe.profile = current_user.profile
-      @recipe.save
+    if @recipe.save
       flash[:notice] = 'You have created a Recipe'
       redirect_to @recipe
     else
-      flash[:alert] = 'haha'
-      render :new
+      flash.now[:error] = "Recipe couldn't be created"
+      respond_to do |format|
+        format.turbo_stream
+        format.html { render :new }
+      end
     end
   end
 
@@ -46,8 +47,11 @@ class RecipesController < ApplicationController
       flash.now[:success] = 'Recipe successfully updated!'
       render turbo_stream: turbo_stream.update("flash", partial: "layouts/flash")
     else
-      flash.now[:error] = 'Recipe Not Updated'
-      render turbo_stream: turbo_stream.update("flash", partial: "layouts/flash")
+      flash.now[:error] = "Recipe couldn't be updated"
+      respond_to do |format|
+        format.turbo_stream
+        format.html { render :edit }
+      end
     end
   end
 
