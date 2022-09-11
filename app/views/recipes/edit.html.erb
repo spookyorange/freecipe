@@ -1,29 +1,53 @@
-<h1 class="flex flex-col xl:flex-row text-xl text-center xl:text-start xl:text-2xl my-4">
-  Everything changes,&nbsp<span class="hidden xl:block underline font-bold">even your Recipe!</span>
-  <p class="text-3xl underline font-bold xl:hidden">even your Recipe!</p>
-</h1>
-
-<div class="flex flex-col xl:grid xl:grid-cols-3 gap-8">
-  <%= render 'form', recipe: @recipe %>
-
+<div class="flex flex-col gap-8">
   <div class="flex flex-col gap-4">
-    <div class="text-center text-xl font-bold text-amber-800">Ingredients</div>
-    <div class="flex justify-center">
-      <a href="#" class="amber-button">
-        Add Ingredient
-      </a>
+    <h1 class="flex flex-col text-xl text-center xl:text-2xl my-4">
+      Everything changes,&nbsp<span class="hidden xl:block underline font-bold">even your Recipe!</span>
+      <p class="text-3xl underline font-bold xl:hidden">even your Recipe!</p>
+    </h1>
+
+    <div class="flex flex-col xl:grid xl:grid-cols-3 gap-8">
+      <div class="flex flex-col">
+        <h3 class="text-center text-xl font-bold text-blue-800">Basic Information</h3>
+        <div class="flex justify-center -mt-4">
+          <%= render 'form', recipe: @recipe %>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h3 class="text-center text-xl font-bold text-amber-800">Ingredients</h3>
+        <div class="flex justify-center">
+          <a href="#" class="amber-button">
+            Add Ingredient
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h3 class="text-center text-xl font-bold text-purple-800">Steps</h3>
+        <div class="flex justify-center">
+          <a href="#" class="purple-button">
+            Add Step
+          </a>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="flex flex-col gap-6">
+    <h2 class="text-2xl underline text-center">Recipe Preview</h2>
+    <div class="flex flex-col items-center gap-2 overflow-scroll">
+      <div class="text-center flex flex-col gap-4 mb-4 container">
+        <div class="flex flex-col md:flex-row justify-center items-center gap-4 gap-x-8">
+          <h1 class="text-3xl font-bold"><%= @recipe.title %></h1>
+        </div>
+        <p class="text-lg underline"><%= @recipe.about %></p>
+      </div>
     </div>
   </div>
 
-  <div class="flex flex-col gap-4">
-    <div class="text-center text-xl font-bold text-purple-800">Steps</div>
-    <div class="flex justify-center">
-      <a href="#" class="purple-button">
-        Add Step
-      </a>
-    </div>
-  </div>
-  <div class="flex justify-center">
+  <div class="flex flex-col items-center gap-4">
+    <h3 class="text-2xl underline text-red-700">Delete Zone</h3>
     <%= link_to recipe_path(@recipe),
                 data: {
                   turbo_method: :delete,
