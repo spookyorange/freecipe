@@ -4,20 +4,30 @@ class IngredientsController < ApplicationController
   def authenticate_owner
     if !user_signed_in? || current_user.profile.nil? ||
       Recipe.find(params[:recipe_id]).profile != current_user.profile
-      redirect_to @recipe
+      redirect_to Recipe.find(params[:recipe_id])
       flash[:alert] = 'This is not your Recipe!'
     end
+  end
+
+  def new
+    @recipe = Recipe.find(params[:recipe_id])
+    @ingredient = @recipe.ingredients.new
   end
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @ingredient = @recipe.ingredients.new(ingredient_params)
     if @ingredient.save
-      flash[:notice] = 'Ingredient created successfully'
+      flash.now[:notice] = 'Ingredient created successfully'
+      respond_to do |format|
+        format.turbo_stream
+      end
     else
-      flash[:alert] = 'Something went wrong'
+      flash.now[:alert] = 'Something went wrong'
+      respond_to do |format|
+        format.turbo_stream
+      end
     end
-    redirect_to @recipe
   end
 
   def update
