@@ -19,14 +19,11 @@ class IngredientsController < ApplicationController
     @ingredient = @recipe.ingredients.new(ingredient_params)
     if @ingredient.save
       flash.now[:notice] = 'Ingredient created successfully'
-      respond_to do |format|
-        format.turbo_stream
-      end
     else
       flash.now[:alert] = 'Something went wrong'
-      respond_to do |format|
-        format.turbo_stream
-      end
+    end
+    respond_to do |format|
+      format.turbo_stream
     end
   end
 

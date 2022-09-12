@@ -8,18 +8,22 @@ class StepsController < ApplicationController
     end
   end
 
-  def create
-    @step = Step.new(step_params)
-    @step.save
+  def new
+    @recipe = Recipe.find(params[:recipe_id])
+    @step = @recipe.steps.new
+  end
 
-    if @step.errors.size == 1
-      @step.recipe = @recipe
-      @step.save
-      flash[:notice] = 'Step successfully saved'
+  def create
+    @recipe = Recipe.find(params[:recipe_id])
+    @step = @recipe.steps.new(step_params)
+    if @step.save
+      flash.now[:notice] = 'Step successfully saved'
     else
-      flash[:alert] = 'Something went wrong'
+      flash.now[:alert] = 'Something went wrong'
     end
-    redirect_to @recipe
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   def update

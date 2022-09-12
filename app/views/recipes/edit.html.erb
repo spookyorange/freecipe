@@ -1,5 +1,8 @@
 <div class="flex flex-col gap-8">
   <div class="flex flex-col gap-4">
+    <div class="flex justify-center">
+      <%= link_to "Back to Recipe", recipe_path(@recipe), :class => "blue-button" %>
+    </div>
     <h1 class="flex flex-col text-xl text-center xl:text-2xl my-4">
       Everything changes,&nbsp<span class="hidden xl:block underline font-bold">even your Recipe!</span>
       <p class="text-3xl underline font-bold xl:hidden">even your Recipe!</p>
@@ -23,9 +26,9 @@
       <div class="flex flex-col gap-4">
         <h3 class="text-center text-xl font-bold text-purple-800">Steps</h3>
         <div class="flex justify-center">
-          <a href="#" class="purple-button">
-            Add Step
-          </a>
+          <turbo-frame id="new_step" class="flex justify-center">
+            <%= link_to "Add Step", new_recipe_step_path(@recipe), :class => "purple-button" %>
+          </turbo-frame>
         </div>
       </div>
 

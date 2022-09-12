@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'recipes#index'
   resources :recipes do
     resources :ingredients, except: [:index, :show]
-    resources :steps, only: [:create, :update, :destroy]
+    resources :steps, except: [:index, :show]
   end
 
   resources :profiles, except: [:destroy, :index]
