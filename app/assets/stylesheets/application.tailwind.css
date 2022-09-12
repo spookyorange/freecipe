@@ -9,7 +9,7 @@
 
     /* flash stuff */
     .flash-main {
-        @apply absolute top-2 left-0 right-0 mx-4 flex-col items-center gap-2;
+        @apply fixed top-2 left-0 right-0 mx-4 flex-col items-center gap-2;
     }
 
     .flash {
