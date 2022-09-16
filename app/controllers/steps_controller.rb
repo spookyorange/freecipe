@@ -35,12 +35,16 @@ class StepsController < ApplicationController
     @step = Step.find(params[:id])
 
     if @step.update(step_params)
-      flash[:success] = 'Step successfully updated'
+      flash.now[:success] = 'Step successfully updated'
+      respond_to do |format|
+        format.turbo_stream
+      end
     else
-      flash[:alert] = 'Something went wrong'
+      flash.now[:alert] = 'Something went wrong'
+      respond_to do |format|
+        format.turbo_stream
+      end
     end
-    redirect_to @recipe
-
   end
 
   def destroy

@@ -5,16 +5,10 @@
   <h1 class="text-2xl text-center underline">Steps for <%= @recipe.title %></h1>
   <p class="text-xl text-center">Sorted by order. </p>
   <p class="text-center font-bold">Make sure to not confuse users with arbitrary order.</p>
-  <ul class="flex flex-col justify-center gap-2">
+  <ul class="flex flex-col items-center gap-8">
     <% @steps.each do |step| %>
       <li class="text-center">
-        <span class="text-amber-800">
-          <%= step.order %>
-        </span>
-
-        <span class="text-blue-800">
-          <%= step.title %>
-        </span>
+      <%= render "steps/step_update", step: step %>
       </li>
     <% end %>
   </ul>
