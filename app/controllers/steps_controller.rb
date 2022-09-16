@@ -48,16 +48,17 @@ class StepsController < ApplicationController
   end
 
   def destroy
-    @step = Step.find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
+    @step = @recipe.steps.find(params[:id])
     @step.delete
 
-    flash[:notice] = 'Step successfully deleted'
-    redirect_to @recipe
+    flash.now[:notice] = 'Step successfully deleted'
+    redirect_to recipe_steps_path(@recipe)
   end
 
   private
 
   def step_params
-    params.require(:step).permit(:title, :description, :time_consumption, :order)
+    params.require(:step).permit(:title, :description, :duration, :order)
   end
 end
