@@ -98,6 +98,10 @@
         @apply button-styling bg-purple-200 hover:bg-purple-800 border-purple-300;
     }
 
+    .pink-button {
+        @apply button-styling bg-pink-200 hover:bg-pink-800 border-pink-300;
+    }
+
     .red-button {
         @apply button-styling bg-red-200 hover:bg-red-800 border-red-300;
     }
@@ -106,6 +110,9 @@
         @apply button-styling bg-amber-200 hover:bg-amber-800 border-amber-300;
     }
 
+    .orange-button {
+        @apply button-styling bg-orange-200 hover:bg-orange-800 border-orange-300;
+    }
     /* end */
     /* form-related */
     .general-form {

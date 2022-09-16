@@ -9,6 +9,11 @@ class IngredientsController < ApplicationController
     end
   end
 
+  def index
+    @recipe = Recipe.find(params[:recipe_id])
+    @ingredients = @recipe.ingredients
+  end
+
   def new
     @recipe = Recipe.find(params[:recipe_id])
     @ingredient = @recipe.ingredients.new
@@ -18,7 +23,7 @@ class IngredientsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @ingredient = @recipe.ingredients.new(ingredient_params)
     if @ingredient.save
-      flash.now[:notice] = 'Ingredient created successfully'
+      flash.now[:success] = 'Ingredient created successfully'
     else
       flash.now[:alert] = 'Something went wrong'
     end
@@ -32,7 +37,7 @@ class IngredientsController < ApplicationController
     @ingredient = @recipe.ingredients.find(params[:id])
 
     if @ingredient.update(ingredient_params)
-      flash[:notice] = 'Ingredient updated successfully'
+      flash[:success] = 'Ingredient updated successfully'
     else
       flash[:alert] = 'Something went wrong'
     end

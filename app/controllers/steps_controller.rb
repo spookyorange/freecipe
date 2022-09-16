@@ -8,6 +8,11 @@ class StepsController < ApplicationController
     end
   end
 
+  def index
+    @recipe = Recipe.find(params[:recipe_id])
+    @steps = @recipe.steps.sort_by(&:order)
+  end
+
   def new
     @recipe = Recipe.find(params[:recipe_id])
     @step = @recipe.steps.new
@@ -17,7 +22,7 @@ class StepsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @step = @recipe.steps.new(step_params)
     if @step.save
-      flash.now[:notice] = 'Step successfully saved'
+      flash.now[:success] = 'Step successfully saved'
     else
       flash.now[:alert] = 'Something went wrong'
     end
@@ -30,7 +35,7 @@ class StepsController < ApplicationController
     @step = Step.find(params[:id])
 
     if @step.update(step_params)
-      flash[:notice] = 'Step successfully updated'
+      flash[:success] = 'Step successfully updated'
     else
       flash[:alert] = 'Something went wrong'
     end
