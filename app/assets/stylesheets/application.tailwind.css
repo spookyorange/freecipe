@@ -113,6 +113,7 @@
     .orange-button {
         @apply button-styling bg-orange-200 hover:bg-orange-800 border-orange-300;
     }
+
     /* end */
     /* form-related */
     .general-form {
@@ -133,10 +134,25 @@
     }
 
     /* end */
+    /* steps exclusive */
+    .steps-update-list {
+        @apply flex flex-col items-center gap-8;
+    }
+
+    /* end */
     @media (min-width: 768px) {
         .index-recipe-container {
             @apply grid gap-8;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+    }
+    @media (min-width: 1028px) {
+        .steps-update-list {
+            @apply grid gap-24;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+        .steps-update-list > li {
+            @apply p-4 border-purple-400 border-2 rounded-xl;
         }
     }
 }
