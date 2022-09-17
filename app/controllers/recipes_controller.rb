@@ -14,6 +14,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @steps = @recipe.steps.sort_by(&:order)
   end
 
   def new

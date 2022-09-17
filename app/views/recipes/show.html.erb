@@ -17,6 +17,6 @@
 <% @recipe.ingredients.each do |ing| %>
   <%= render 'ingredients/ing', ingredient: ing %>
 <% end %>
-<% @recipe.steps.each do |step| %>
+<% @steps.each do |step| %>
   <%= render 'steps/step', step: step %>
 <% end %>
