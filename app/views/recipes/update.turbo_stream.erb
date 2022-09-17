@@ -6,3 +6,7 @@
 <%= turbo_stream.update "recipe-about-error",
                         partial: "layouts/error_fragment",
                         locals: { errors: @recipe.errors[:about], attr: "About" } %>
+<% if @recipe.errors.size === 0 %>
+  <%= turbo_stream.update "recipe-preview",
+                          partial: "recipes/basic_preview" %>
+<% end %>

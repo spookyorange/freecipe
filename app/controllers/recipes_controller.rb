@@ -46,12 +46,13 @@ class RecipesController < ApplicationController
 
     if @recipe.update(recipe_params)
       flash.now[:success] = 'Recipe successfully updated!'
-      render turbo_stream: turbo_stream.update("flash", partial: "layouts/flash")
+      respond_to do |format|
+        format.turbo_stream
+      end
     else
       flash.now[:error] = "Recipe couldn't be updated"
       respond_to do |format|
         format.turbo_stream
-        format.html { render :edit }
       end
     end
   end
