@@ -52,9 +52,9 @@ class StepsController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
     @step = @recipe.steps.find(params[:id])
-    @step.delete
+    @step.destroy
 
-    flash.now[:notice] = 'Step successfully deleted'
+    flash[:notice] = 'Step successfully deleted'
     redirect_to recipe_steps_path(@recipe)
   end
 
