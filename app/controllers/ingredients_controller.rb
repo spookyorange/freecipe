@@ -10,7 +10,7 @@ class IngredientsController < ApplicationController
 
   def index
     @recipe = Recipe.find(params[:recipe_id])
-    @ingredients = @recipe.ingredients
+    @ingredients = @recipe.ingredients.sort_by(&:id)
   end
 
   def new
@@ -21,6 +21,7 @@ class IngredientsController < ApplicationController
   def create
     # TODO: FOR VIEW Implement reset form after successful creation
     # TODO: FOR VIEW Show errors
+    # TODO: Add turbo stream file to add new ingredients to preview page / index page of the ingredients
     @recipe = Recipe.find(params[:recipe_id])
     @ingredient = @recipe.ingredients.new(ingredient_params)
     if @ingredient.save
