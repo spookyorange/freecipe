@@ -4,5 +4,6 @@
       New Ingredient
     </h4>
     <%= render "ingredients/form", recipe: @recipe %>
+    <%= link_to "Back", edit_recipe_path(@recipe), :class => "red-button" %>
   </div>
 </turbo-frame>
