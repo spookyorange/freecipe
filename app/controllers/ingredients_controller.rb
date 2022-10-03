@@ -20,6 +20,8 @@ class IngredientsController < ApplicationController
   end
 
   def create
+    # TODO: FOR VIEW Implement reset form after successful creation
+    # TODO: FOR VIEW Show errors
     @recipe = Recipe.find(params[:recipe_id])
     @ingredient = @recipe.ingredients.new(ingredient_params)
     if @ingredient.save

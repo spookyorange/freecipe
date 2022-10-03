@@ -19,6 +19,8 @@ class StepsController < ApplicationController
   end
 
   def create
+    # TODO: FOR VIEW Implement reset form after successful creation
+    # TODO: FOR VIEW Show errors
     @recipe = Recipe.find(params[:recipe_id])
     @step = @recipe.steps.new(step_params)
     if @step.save
