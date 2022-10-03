@@ -1,5 +1,5 @@
 <% flash.each do |flash_type, message| %>
-  <div class="animate-initiateObjectThenKillOpacity flash flash-<%= "#{flash_type}" %>">
+  <div data-controller="flash" data-flash-target="itself" class="animate-initiateObjectThenKillOpacity flash flash-<%= "#{flash_type}" %>">
     <%= message %>
   </div>
 <% end %>
