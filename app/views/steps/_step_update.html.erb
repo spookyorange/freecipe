@@ -19,9 +19,10 @@
     <% end %>
     <div class="flex justify-evenly">
       <%= f.submit :class => "purple-button" %>
-      <%= link_to 'Delete Step', recipe_step_path(step.recipe, step),
+      <%= link_to 'Delete Step',
+                  recipe_step_path(step.recipe, step),
                   data: { turbo_method: :delete,
-                          turbo_confirm: 'Are You sure'},
+                          turbo_confirm: 'Are You sure' },
                   :class => "red-button" %>
     </div>
   </div>
