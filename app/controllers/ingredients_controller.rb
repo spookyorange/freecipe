@@ -2,10 +2,9 @@ class IngredientsController < ApplicationController
   before_action :authenticate_owner
 
   def authenticate_owner
-    if !user_signed_in? || current_user.profile.nil? ||
-      Recipe.find(params[:recipe_id]).profile != current_user.profile
-      redirect_to Recipe.find(params[:recipe_id])
-      flash[:alert] = 'This is not your Recipe!'
+    @recipe = Recipe.find(params[:recipe_id])
+    if !user_signed_in? || !current_user.profile || !(current_user.profile == @recipe.profile)
+      redirect_to @recipe
     end
   end
 
