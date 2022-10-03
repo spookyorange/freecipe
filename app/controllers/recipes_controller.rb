@@ -38,6 +38,8 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    # TODO: Implement Ingredient and Step preview
+    # TODO: Make Implement and Step preview turbo powered
     @recipe = Recipe.find(params[:id])
   end
 
