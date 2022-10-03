@@ -1,9 +1,21 @@
 <%= form_with model: [ingredient.recipe, ingredient] do |f| %>
-  <%= f.label :quantity %>
-  <%= f.number_field :quantity %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
+  <div class="flex flex-col gap-4">
+    <h4 class="text-amber-800 text-lg font-bold"><%= ingredient.name %></h4>
+    <%= f.label :quantity, :class => "flex items-center gap-2 text-lg w-full" do %>
+      <span>Quantity</span>
+      <%= f.number_field :quantity, :class => "ml-auto input-area-general" %>
+    <% end %>
+    <%= f.label :name, :class => "flex items-center gap-2 text-lg w-full" do %>
+      <span>Name</span>
+      <%= f.text_field :name, :class => "ml-auto input-area-general" %>
+    <% end %>
+    <div class="flex justify-evenly gap-4">
+      <%= f.submit :class => "amber-button" %>
+      <%= link_to 'Delete Ingredient',
+                  recipe_ingredient_path(ingredient.recipe, ingredient),
+                  data: { turbo_method: :delete,
+                          turbo_confirm: 'Are You sure' },
+                  :class => "red-button" %>
+    </div>
+  </div>
 <% end %>
-<%= link_to 'delete ingredient', [ingredient.recipe, ingredient], data: { turbo_method: :delete,
-                                                                          turbo_confirm: 'Are you sure?' } %>

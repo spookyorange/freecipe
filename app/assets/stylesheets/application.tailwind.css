@@ -140,6 +140,12 @@
     }
 
     /* end */
+    /* ingredients exclusive */
+    .ingredients-update-list {
+        @apply flex flex-col items-center gap-8;
+    }
+
+    /* end */
     @media (min-width: 768px) {
         .index-recipe-container {
             @apply grid gap-8;
@@ -151,8 +157,18 @@
             @apply grid gap-24;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         }
+
         .steps-update-list > li {
-            @apply p-4 border-purple-400 border-2 rounded-xl;
+            @apply p-4 border-purple-400 border-2 rounded-xl max-w-[400px];
+        }
+
+        .ingredients-update-list {
+            @apply grid gap-24;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        .ingredients-update-list > li {
+            @apply p-4 border-amber-400 border-2 rounded-xl max-w-[400px];
         }
     }
 }

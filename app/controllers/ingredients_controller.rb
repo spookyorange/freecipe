@@ -39,11 +39,13 @@ class IngredientsController < ApplicationController
     @ingredient = @recipe.ingredients.find(params[:id])
 
     if @ingredient.update(ingredient_params)
-      flash[:success] = 'Ingredient updated successfully'
+      flash.now[:success] = 'Ingredient updated successfully'
     else
-      flash[:alert] = 'Something went wrong'
+      flash.now[:alert] = 'Something went wrong'
     end
-    redirect_to @recipe
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   def destroy
