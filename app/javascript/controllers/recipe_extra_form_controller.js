@@ -12,7 +12,6 @@ export default class extends Controller {
   }
 
   checkStepTitle() {
-    console.log(this.titleTarget.value.length)
     const titleValueLength = this.titleTarget.value.length
 
     if ((this.titleTarget.value === "") || (titleValueLength < 6) || (titleValueLength > 18)) {
