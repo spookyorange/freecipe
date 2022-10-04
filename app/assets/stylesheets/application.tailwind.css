@@ -138,11 +138,15 @@
 
     .input-area-general {
         @apply text-center rounded-lg p-2 border-2 border-blue-400 ;
-        @apply hover:border-blue-600 focus:border-blue-800 focus:outline-none;
+        @apply hover:border-blue-600 focus:border-blue-800 focus:ring-0;
     }
 
     .label-general {
         @apply text-center text-blue-800 w-24 font-bold;
+    }
+
+    .invalid-input {
+        @apply border-red-400 hover:border-red-500 focus:border-red-600;
     }
 
     /* end */

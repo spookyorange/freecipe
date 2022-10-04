@@ -6,8 +6,18 @@ export default class extends Controller {
   reset(event) {
     if (event.detail.success) {
       this.element.reset();
-      this.stepSubmitTarget.disabled = true
-      this.stepSubmitTarget.classList.add('disabled-purple-button')
+      this.stepSubmitTarget.disabled = true;
+      this.stepSubmitTarget.classList.add('disabled-purple-button');
+      this.titleTarget.dataset.valid = "0";
+      this.titleTarget.classList.add('invalid-input');
+      this.descriptionTarget.dataset.valid = "0";
+      this.descriptionTarget.classList.add('invalid-input');
+      this.descriptionTarget.dataset.valid = "0";
+      this.descriptionTarget.classList.add('invalid-input');
+      this.durationTarget.dataset.valid = "0";
+      this.durationTarget.classList.add('invalid-input');
+      this.orderTarget.dataset.valid = "0";
+      this.orderTarget.classList.add('invalid-input');
     }
   }
 
@@ -16,8 +26,10 @@ export default class extends Controller {
 
     if ((this.titleTarget.value === "") || (titleValueLength < 6) || (titleValueLength > 18)) {
       this.titleTarget.dataset.valid = "0"
+      this.titleTarget.classList.add('invalid-input')
     } else {
       this.titleTarget.dataset.valid = "1"
+      this.titleTarget.classList.remove('invalid-input')
     }
     this.checkStepOverall()
   }
@@ -27,8 +39,10 @@ export default class extends Controller {
 
     if ((this.descriptionTarget.value === "") || (descriptionValueLength < 15) || (descriptionValueLength > 120)) {
       this.descriptionTarget.dataset.valid = "0"
+      this.descriptionTarget.classList.add('invalid-input')
     } else {
       this.descriptionTarget.dataset.valid = "1"
+      this.descriptionTarget.classList.remove('invalid-input')
     }
     this.checkStepOverall()
   }
@@ -38,8 +52,10 @@ export default class extends Controller {
 
     if ((this.durationTarget.value === "") || (durationValue < 1) || (durationValue > 180)) {
       this.durationTarget.dataset.valid = "0"
+      this.durationTarget.classList.add('invalid-input')
     } else {
       this.durationTarget.dataset.valid = "1"
+      this.durationTarget.classList.remove('invalid-input')
     }
     this.checkStepOverall()
   }
@@ -49,8 +65,10 @@ export default class extends Controller {
 
     if ((this.orderTarget.value === "") || (orderValue < 0)) {
       this.orderTarget.dataset.valid = "0"
+      this.orderTarget.classList.add('invalid-input')
     } else {
       this.orderTarget.dataset.valid = "1"
+      this.orderTarget.classList.remove('invalid-input')
     }
     this.checkStepOverall()
   }
@@ -62,13 +80,12 @@ export default class extends Controller {
       (this.orderTarget.dataset.valid === "1")) {
       this.stepSubmitTarget.disabled = false
       this.stepSubmitTarget.classList.remove('disabled-purple-button')
-    }
-    else {
+    } else {
       this.stepSubmitTarget.disabled = true
       this.stepSubmitTarget.classList.add('disabled-purple-button')
     }
 
-      /* this.submitTarget.disabled = false
-      this.submitTarget.classList.remove('disabled-purple-button') */
-    }
+    /* this.submitTarget.disabled = false
+    this.submitTarget.classList.remove('disabled-purple-button') */
   }
+}
