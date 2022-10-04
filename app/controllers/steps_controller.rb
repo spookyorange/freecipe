@@ -19,8 +19,6 @@ class StepsController < ApplicationController
   end
 
   def create
-    # TODO: FOR VIEW Implement reset form after successful creation
-    # TODO: FOR VIEW Show errors
     # TODO: Add turbo stream file to add new ingredients to preview page / index page of the steps
     @recipe = Recipe.find(params[:recipe_id])
     @step = @recipe.steps.new(step_params)
