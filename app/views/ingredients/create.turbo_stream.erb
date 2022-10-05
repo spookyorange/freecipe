@@ -1,2 +1,5 @@
 <%= turbo_stream.update 'flash',
                         partial: 'layouts/flash' %>
+<%= turbo_stream.append 'ingredients',
+                        partial: "ingredients/ing_update",
+                        locals: { ingredient: @ingredient } %>

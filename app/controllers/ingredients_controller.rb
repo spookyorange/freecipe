@@ -19,7 +19,6 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    # TODO: FOR VIEW Show errors
     # TODO: Add turbo stream file to add new ingredients to preview page / index page of the ingredients
     @recipe = Recipe.find(params[:recipe_id])
     @ingredient = @recipe.ingredients.new(ingredient_params)

@@ -2,7 +2,7 @@
   <div class="flex justify-center">
     <%= link_to "Get Back", edit_recipe_path(@recipe), :class => "red-button" %>
   </div>
-  <h1 class="text-2xl text-center underline">Ingredients for <%= @recipe.title %></h1>
+  <h3 class="text-2xl text-center underline">New Ingredient</h3>
   <div class="flex justify-center pb-6 border-b-8 border-b-amber-600">
     <div class="flex flex-col gap-4 items-center p-4 border-amber-600 border-2 rounded-xl max-w-[400px]">
       <h4 class="text-xl underline">
@@ -11,12 +11,13 @@
       <%= render "ingredients/form", recipe: @recipe %>
     </div>
   </div>
-  <ul class="ingredients-update-list">
-    <% @ingredients.each do |ingredient| %>
-      <li class="text-center">
+  <h3 class="text-2xl text-center underline">Ingredients for <%= @recipe.title %></h3>
+  <ul>
+    <%= turbo_frame_tag 'ingredients', :class => "ingredients-update-list" do %>
+      <% @ingredients.each do |ingredient| %>
         <%= render "ingredients/ing_update",
                    ingredient: ingredient %>
-      </li>
+      <% end %>
     <% end %>
   </ul>
 </div>
