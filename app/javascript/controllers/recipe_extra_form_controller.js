@@ -3,22 +3,20 @@ import {Controller} from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = ["title", "description", "duration", "order", "stepSubmit"]
 
-  reset(event) {
-    if (event.detail.success) {
-      this.element.reset();
-      this.stepSubmitTarget.disabled = true;
-      this.stepSubmitTarget.classList.add('disabled-purple-button');
-      this.titleTarget.dataset.valid = "0";
-      this.titleTarget.classList.add('invalid-input');
-      this.descriptionTarget.dataset.valid = "0";
-      this.descriptionTarget.classList.add('invalid-input');
-      this.descriptionTarget.dataset.valid = "0";
-      this.descriptionTarget.classList.add('invalid-input');
-      this.durationTarget.dataset.valid = "0";
-      this.durationTarget.classList.add('invalid-input');
-      this.orderTarget.dataset.valid = "0";
-      this.orderTarget.classList.add('invalid-input');
-    }
+  resetStepForm() {
+    this.element.reset();
+    this.stepSubmitTarget.disabled = true;
+    this.stepSubmitTarget.classList.add('disabled-purple-button');
+    this.titleTarget.dataset.valid = "0";
+    this.titleTarget.classList.add('invalid-input');
+    this.descriptionTarget.dataset.valid = "0";
+    this.descriptionTarget.classList.add('invalid-input');
+    this.descriptionTarget.dataset.valid = "0";
+    this.descriptionTarget.classList.add('invalid-input');
+    this.durationTarget.dataset.valid = "0";
+    this.durationTarget.classList.add('invalid-input');
+    this.orderTarget.dataset.valid = "0";
+    this.orderTarget.classList.add('invalid-input');
   }
 
   checkStepTitle() {
