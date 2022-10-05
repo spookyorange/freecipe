@@ -1,9 +1,7 @@
-<turbo-frame id="new_step">
-  <div class="flex flex-col gap-4 items-center">
-    <h4 class="text-xl underline">
-      New Step
-    </h4>
-    <%= render "steps/form", recipe: @recipe %>
-    <%= link_to "Back", edit_recipe_path(@recipe), :class => "red-button" %>
-  </div>
-</turbo-frame>
+<div class="flex flex-col gap-4 items-center">
+  <h4 class="text-xl underline">
+    New Step
+  </h4>
+  <%= render "steps/form", recipe: @recipe %>
+  <%= link_to "Back", edit_recipe_path(@recipe), :class => "red-button" %>
+</div>

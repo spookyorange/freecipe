@@ -18,9 +18,6 @@
 
       <div class="flex flex-col gap-4">
         <h3 class="text-center text-xl font-bold text-amber-800">Ingredients</h3>
-        <turbo-frame id="new_ing" class="flex justify-center">
-          <%= link_to "Add Ingredient", new_recipe_ingredient_path(@recipe), :class => "amber-button" %>
-        </turbo-frame>
         <div class="flex justify-center">
           <%= link_to "See/Edit Ingredients", recipe_ingredients_path(@recipe), :class => "orange-button" %>
         </div>
@@ -28,9 +25,6 @@
 
       <div class="flex flex-col gap-4">
         <h3 class="text-center text-xl font-bold text-purple-800">Steps</h3>
-        <turbo-frame id="new_step" class="flex justify-center">
-          <%= link_to "Add Step", new_recipe_step_path(@recipe), :class => "purple-button" %>
-        </turbo-frame>
         <div class="flex justify-center">
           <%= link_to "See/Edit Steps", recipe_steps_path(@recipe), :class => "pink-button" %>
         </div>
